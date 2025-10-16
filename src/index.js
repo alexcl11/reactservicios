@@ -6,10 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import ServicioApiCustomers from './components/ServicioApiCustomers';
 import ServiceApiSuppliers from './components/ServiceApiSuppliers';
 import Router from './components/Router'
+import Menu from './components/Menu';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+root.render(<div>
     <Menu/>
     <Router/>
+    </div>
 );
 
 // If you want to start measuring performance in your app, pass a function

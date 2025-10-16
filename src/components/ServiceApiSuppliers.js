@@ -42,24 +42,24 @@ export default class ServiceApiSuppliers extends Component {
 
   render() {
     return (
-      <div>
+      <div class="container-fluid">
         <h1>Servicio API Suppliers</h1>
-        <ul>
+        <ul class="list-group">
             {
                 this.state.suppliers.map((supplier, index) => {
-                    return (<li key={index}>{supplier.SupplierID} - {supplier.ContactName}</li>)
+                    return (<li class='list-group-item' key={index}>{supplier.SupplierID} - {supplier.ContactName}</li>)
                 })
             }
         </ul>
         <form onSubmit={this.buscarSupplier}>
-            <label>Introduce ID: </label>
-            <input type='text' ref={this.cajaID}/>
+            <label >Introduce ID: </label>
+            <input class="form-control-plaintext border"  type='text' ref={this.cajaID}/>
             <button>Buscar</button>
         </form>
-        <ul>
+        <ul class="list-group">
             {
                 this.state.supplierBuscado != null &&
-                <li>{this.state.supplierBuscado.id} - {this.state.supplierBuscado.nombre}</li>
+                <li class="list-group">{this.state.supplierBuscado.id} - {this.state.supplierBuscado.nombre}</li>
             }
         </ul>
       </div>
