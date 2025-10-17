@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import Home from './Home'
 import ServicioApiCustomers from './ServicioApiCustomers'
 import ServiceApiSuppliers from './ServiceApiSuppliers'
+import EmpleadosDepartamento from './EmpleadosDepartamento'
+import EmpleadosDepartamentov2 from './EmpleadosDepartamentov2'
 
 export default class Router extends Component {
   render() {
@@ -12,6 +14,8 @@ export default class Router extends Component {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/serviciocustomers" element={<ServicioApiCustomers/>}/>
                 <Route path="/serviciosuppliers" element={<ServiceApiSuppliers/>}/>
+                <Route path="/servicioempleados" element={<EmpleadosDepartamento/>}/>
+                <Route path="/servicioempleadosv2" element={<EmpleadosDepartamentov2/>}/>
             </Routes>
         </BrowserRouter>
     )
