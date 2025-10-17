@@ -59,27 +59,63 @@ export default class ServiceApiSuppliers extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <h1>Servicio API Suppliers</h1>
-        <form onSubmit={this.buscarSupplier}>
-            <label >Introduce ID: </label>
-            <input className="form-control-plaintext border"  type='text' ref={this.cajaID}/>
-            <button>Buscar</button>
-        </form>
-        <ul className="list-group">
-            {
-                this.state.supplierBuscado != null &&
-                <li className="list-group">{this.state.supplierBuscado.id} - {this.state.supplierBuscado.nombre} - {this.state.supplierBuscado.direccion} - {this.state.supplierBuscado.ciudad} - {this.state.supplierBuscado.titulo}</li>
-            }
-        </ul>
-        <hr></hr>
-        <ul className="list-group">
-            {
+      <div className="container mt-4">
+        <h1 className="display-4 text-center mb-4">Servicio API Suppliers</h1>
+        
+        <div className="row justify-content-center mb-4">
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-body">
+                <form onSubmit={this.buscarSupplier} className="mb-3">
+                  <div className="mb-3">
+                    <label className="form-label">Introduce ID:</label>
+                    <input 
+                      type='text' 
+                      className="form-control" 
+                      ref={this.cajaID}
+                      placeholder="Ingrese ID del proveedor"
+                    />
+                  </div>
+                  <button className="btn btn-primary w-100">Buscar Supplier</button>
+                </form>
+                
+                {this.state.supplierBuscado && (
+                  <div className="card bg-light">
+                    <div className="card-body">
+                      <h5 className="card-title text-primary mb-3">Supplier Encontrado</h5>
+                      <p className="card-text mb-2"><strong>ID:</strong> {this.state.supplierBuscado.id}</p>
+                      <p className="card-text mb-2"><strong>Nombre:</strong> {this.state.supplierBuscado.nombre}</p>
+                      <p className="card-text mb-2"><strong>Dirección:</strong> {this.state.supplierBuscado.direccion}</p>
+                      <p className="card-text mb-2"><strong>Ciudad:</strong> {this.state.supplierBuscado.ciudad}</p>
+                      <p className="card-text mb-0"><strong>Título:</strong> {this.state.supplierBuscado.titulo}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 className="h3 text-center mb-3">Lista de Suppliers</h2>
+        <div className="row">
+          <div className="col">
+            <div className="list-group">
+              {
                 this.state.suppliers.map((supplier, index) => {
-                    return (<li className='list-group-item' key={index}>{supplier.SupplierID} - {supplier.ContactName}</li>)
+                  return (
+                    <div className="list-group-item list-group-item-action d-flex justify-content-between align-items-center" key={index}>
+                      <div>
+                        <strong className="me-2">#{supplier.SupplierID}</strong>
+                        {supplier.ContactName}
+                      </div>
+                      <span className="badge bg-primary rounded-pill">{supplier.City}</span>
+                    </div>
+                  )
                 })
-            }
-        </ul>        
+              }
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

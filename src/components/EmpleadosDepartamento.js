@@ -25,40 +25,50 @@ export default class EmpleadosDepartamento extends Component {
     
   render() {
     return (
-      <div>
-        <h1>Empleados por Departamento</h1>
-        <hr></hr>
-        <form onSubmit={this.loadEmpleadosDepartamento}>
-            <label>Introduce ID: </label>
-            <input  type='number' ref={this.cajaID}/>
-            <button>Buscar Empleados</button>
-        </form>
-        <hr></hr>
-        <table className = "text-center" border = "10">
-            <thead>
-                <tr>
-                    <th>ID Empleado</th>
-                    <th>Apellido</th>
-                    <th>Oficio</th>
-                    <th>Salario</th>
-                    <th>ID Departamento</th>
-                </tr>
+
+        <div className="container mt-4">
+        <h1 className="display-4 text-center mb-4">Empleados por Departamento</h1>
+        <div className="row justify-content-center">
+          <div className="col-md-6">
+            <form className="mb-4" onSubmit={this.loadEmpleadosDepartamento}>
+              <div className="form-group">
+                <label className="form-label">Seleccione Oficio:</label> 
+                <br></br>               
+                <input className="form-input"  type='number' ref={this.cajaID}/>
+                <button className="btn btn-primary mx-2">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div className="table-responsive">
+          <table className="table table-hover table-striped">
+            <thead className="table-dark">
+              <tr>
+                <th>ID Empleado</th>
+                <th>Apellido</th>
+                <th>Oficio</th>
+                <th>Salario</th>
+                <th>ID Departamento</th>
+              </tr>
             </thead>
             <tbody>
-                {
-                    this.state.empleados.map((empleado, index) => {
-                        return (<tr key={index}>
-                                    <td>{empleado.idEmpleado}</td>
-                                    <td>{empleado.apellido}</td>
-                                    <td>{empleado.oficio}</td>
-                                    <td>{empleado.salario} €</td>
-                                    <td>{empleado.departamento}</td>
-                                </tr>)
-                    })
-                }
+              {
+                this.state.empleados.map((empleado, index) => {
+                  return (<tr key={index}>
+                    <td>{empleado.idEmpleado}</td>
+                    <td>{empleado.apellido}</td>
+                    <td>{empleado.oficio}</td>
+                    <td>{empleado.salario} €</td>
+                    <td>{empleado.departamento}</td>
+                  </tr>)
+                })
+              }
             </tbody>            
-        </table>
+          </table>
+        </div>
       </div>
+
+      
     )
   }
 }

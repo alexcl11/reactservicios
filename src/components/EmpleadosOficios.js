@@ -1,22 +1,33 @@
 import React, { Component } from 'react'
-import Global from '../Global';
+import Global from '../Global'
 import axios from 'axios';
-
-export default class EmpleadosDepartamentov2 extends Component {
-  urlEmpleados = Global.urlEmpleados;
-  urlDepartamentos = Global.urlDepartamentos;
-
-    selectDepartamento = React.createRef();
-
+export default class EmpleadosOficios extends Component {
+    urlEmpleados = Global.urlEmpleados;
+    selectOficios = React.createRef();
     state = {
-        empleados: [], 
-        departamentos: []
+        oficios: [],
+        empleados: []
     }
 
-    loadEmpleadosDepartamento = (event) => {
+    loadOficios = () => {
+        let request = "api/Empleados"
+        let setOficios = new Set([])
+        axios.get(this.urlEmpleados + request).then(response => {
+            let empleados = response.data
+            for (const empleado of empleados) {
+                setOficios.add(empleado.oficio)
+            }      
+            this.setState({
+                oficios: Array.from(setOficios)
+            })      
+        })
+        
+    }
+
+    buscarEmpleadosPorOficio = (event) => {
         event.preventDefault();
-        let idDepartamento = parseInt(this.selectDepartamento.current.value)
-        let request = `api/Empleados/EmpleadosDepartamento/${idDepartamento}`;
+        let oficio = this.selectOficios.current.value;
+        let request = `api/Empleados/EmpleadosOficio/${oficio}`
         axios.get(this.urlEmpleados+request).then(response => {
             this.setState({
                 empleados: response.data
@@ -24,36 +35,26 @@ export default class EmpleadosDepartamentov2 extends Component {
         })
     }
 
-    loadDepartamentosSelect = () => {
-        let request = "webresources/departamentos";
-        axios.get(this.urlDepartamentos+request).then(response => {
-            this.setState({
-                departamentos: response.data
-            })
-        })
-    }
-
     componentDidMount = () => {
-        this.loadDepartamentosSelect()
+        this.loadOficios();
     }
 
   render() {
     return (
       <div className="container mt-4">
-        <h1 className="display-4 text-center mb-4">Empleados por Departamento</h1>
+        <h1 className="display-4 text-center mb-4">Empleados por Oficio</h1>
         <div className="row justify-content-center">
           <div className="col-md-6">
             <form className="mb-4">
               <div className="form-group">
-                <label className="form-label">Seleccione Departamento:</label>
+                <label className="form-label">Seleccione Oficio:</label>
                 <select 
                   className="form-select" 
-                  onChange={this.loadEmpleadosDepartamento} 
-                  ref={this.selectDepartamento}
-                >
+                  onChange={this.buscarEmpleadosPorOficio} 
+                  ref={this.selectOficios}>
                   {
-                    this.state.departamentos.map((departamento, index) => {
-                      return (<option key={index} value={departamento.numero}>{departamento.nombre}</option>)
+                    this.state.oficios.map((oficio, index) => {
+                        return (<option key={index}>{oficio}</option>)
                     })
                   }
                 </select>

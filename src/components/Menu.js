@@ -23,10 +23,13 @@ export default class Menu extends Component {
                 </li>
                 
                 <li className="nav-item">
-                  <a className="nav-link" href="/servicioempleados">Servicio Empleados</a>
+                  <a className="nav-link" href="/servicioempleados">Servicio Empleados por Departamento</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/servicioempleadosv2">Servicio Empleados v2</a>
+                  <a className="nav-link" href="/servicioempleadosv2">Servicio Empleados por Departamento Select</a>
+                </li>                
+                <li className="nav-item">
+                  <a className="nav-link" href="/servicioempleadosoficios">Servicio Empleados por Oficio</a>
                 </li>
               </ul>
             </div>
