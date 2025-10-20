@@ -37,6 +37,12 @@ export default class Menu extends Component {
                 <li className="nav-item">
                   <a className="nav-link" href="/cursos">Servicio Alumnos por Curso</a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/tablamultiplicar/7">Tabla Multiplicar</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/collatz/7">Collatz</a>
+                </li>
               </ul>
             </div>
           </div>

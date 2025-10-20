@@ -7,11 +7,12 @@ import ServicioApiCustomers from './components/ServicioApiCustomers';
 import ServiceApiSuppliers from './components/ServiceApiSuppliers';
 import Router from './components/Router'
 import Menu from './components/Menu';
+import TablaMultiplicar from './components/TablaMultiplicar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<div>
     <Menu/>
-    <Router/>        
+    <Router/>
     </div>
 );
 
