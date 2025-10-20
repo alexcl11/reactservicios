@@ -6,6 +6,8 @@ import ServiceApiSuppliers from './ServiceApiSuppliers'
 import EmpleadosDepartamento from './EmpleadosDepartamento'
 import EmpleadosDepartamentov2 from './EmpleadosDepartamentov2'
 import EmpleadosOficios from './EmpleadosOficios'
+import Departamento from './maestrodetalle/Departamento'
+import Cursos from './ejemplocomunicacion/Cursos'
 
 export default class Router extends Component {
   render() {
@@ -18,6 +20,8 @@ export default class Router extends Component {
                 <Route path="/servicioempleados" element={<EmpleadosDepartamento/>}/>
                 <Route path="/servicioempleadosv2" element={<EmpleadosDepartamentov2/>}/>
                 <Route path="/servicioempleadosoficios" element={<EmpleadosOficios/>}/>
+                <Route path="/departamento" element={<Departamento/>}/>
+                <Route path="/cursos" element={<Cursos/>}/>
             </Routes>
         </BrowserRouter>
     )
