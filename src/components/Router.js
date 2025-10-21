@@ -11,6 +11,7 @@ import Cursos from './ejemplocomunicacion/Cursos'
 import NotFound from './NotFound'
 import TablaMultiplicar from './TablaMultiplicar'
 import Collatz from './Collatz'
+import Menu from './Menu'
 
 export default class Router extends Component {
   render() {
@@ -29,6 +30,7 @@ export default class Router extends Component {
     }
     return (
         <BrowserRouter>
+        <Menu/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 {/*PARA INCLUIR LAS RUTAS QUE NO EXISTEN POR UNA PÁGINA 404 
@@ -43,9 +45,9 @@ export default class Router extends Component {
                 <Route path="/cursos" element={<Cursos/>}/>
                 <Route path="/tablamultiplicar/:minumero" element={<TablaMultiplicarElement/>}/>
                 <Route path="/collatz/:numero" element={<CollatzElement/>}/>
-                <Route path="*" element={<NotFound/>}/>
+                <Route path="*" element={<NotFound/>}/>                
             </Routes>
-        </BrowserRouter>
+        </BrowserRouter>        
     )
   }
 }
