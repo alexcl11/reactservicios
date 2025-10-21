@@ -23,19 +23,32 @@ export default class TablaMultiplicar extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Tabla de Multiplicar Rutas</h1>
-        <hr></hr>
-        <h3>Número {this.props.numero}</h3>
+            <div className="container mt-4">
+                <h1 className="display-4 text-center mb-3">Tabla de Multiplicar</h1>
+                <div className="row justify-content-center">
+                    <div className="col-md-6">
+                        <div className="card mb-3">
+                            <div className="card-body text-center">
+                                <h5 className="card-title">Número</h5>
+                                <p className="card-text fs-4 text-primary">{this.props.numero}</p>
+                            </div>
+                        </div>
 
-        <ul>
-            {
-                this.state.tabla.map((resultado, index) => {
-                    return (<li key={index}>{resultado/(index+1)} · {index+1} = {resultado}</li>)
-                })
-            }
-        </ul>
-      </div>
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">Tabla de multiplicar</h5>
+                                <ul className="list-group list-group-flush">
+                                    {
+                                        this.state.tabla.map((resultado, index) => (
+                                            <li className="list-group-item" key={index}>{resultado/(index+1)} &times; {index+1} = {resultado}</li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     )
   }
 }

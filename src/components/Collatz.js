@@ -28,18 +28,31 @@ export default class Collatz extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Collatz</h1>
-        <hr></hr>
-        <h3>Número {this.props.numero}</h3>
-        <ul>
-            {   
-                this.state.numeros.map((resultado, index) => {
-                    return (<li key={index}>{resultado}</li>)
-                })
-            }
-        </ul>
-      </div>
+            <div className="container mt-4">
+                <h1 className="display-4 text-center mb-3">Collatz</h1>
+                <div className="row justify-content-center">
+                    <div className="col-md-6">
+                        <div className="card mb-3">
+                            <div className="card-body">
+                                <h5 className="card-title">Número inicial</h5>
+                                <p className="card-text fs-4 text-primary">{this.props.numero}</p>
+                            </div>
+                        </div>
+
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">Secuencia Collatz</h5>
+                                <p className="text-muted small">Pasos hasta llegar a 1</p>
+                                <ul className="list-group list-group-flush">
+                                    {this.state.numeros.map((resultado, index) => (
+                                        <li className="list-group-item" key={index}>{resultado}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     )
   }
 }
