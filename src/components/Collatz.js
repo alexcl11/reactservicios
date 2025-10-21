@@ -31,7 +31,7 @@ export default class Collatz extends Component {
       <div>
         <h1>Collatz</h1>
         <hr></hr>
-        <h3>Numero {this.props.numero}</h3>
+        <h3>Número {this.props.numero}</h3>
         <ul>
             {   
                 this.state.numeros.map((resultado, index) => {
