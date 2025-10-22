@@ -13,10 +13,13 @@ import ServiceApiSuppliers from './components/ServiceApiSuppliers';
 import Router from './components/Router'
 import Menu from './components/Menu';
 import TablaMultiplicar from './components/TablaMultiplicar';
+import Trabajadores from './components/Trabajadores';
+import HospitalesMultiples from './components/HospitalesMultiples';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<div>
-    <Router/>
+    {/* <Router/> */}
+    <HospitalesMultiples/>
     </div>
 );
 
