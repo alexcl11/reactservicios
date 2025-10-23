@@ -17,9 +17,9 @@ import Trabajadores from './components/Trabajadores';
 import HospitalesMultiples from './components/HospitalesMultiples';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<div>
-    {/* <Router/> */}
-    <HospitalesMultiples/>
+root.render(
+    <div>
+        <Router/>
     </div>
 );
 

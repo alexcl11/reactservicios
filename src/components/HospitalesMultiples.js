@@ -3,21 +3,23 @@ import Trabajadores from './Trabajadores'
 import Global from '../Global';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { NavLink } from 'react-router-dom';
+import loading from './../assets/loading.gif'
 export default class HospitalesMultiples extends Component {
     selectHospital = React.createRef();
     incrementarSalarioBoton = React.createRef();
     url = Global.urlTrabajadores;
     state = {
         hospitales: [],
-        hospitalesSeleccionados: []
+        hospitalesSeleccionados: [],
+        status: false
     }
 
     loadHospitales = () => {
         let request = "api/hospitales";
         axios.get(this.url + request).then(response => {
             this.setState({
-                hospitales: response.data
+                hospitales: response.data,
+                status: true
             })
         })
     }
@@ -32,12 +34,12 @@ export default class HospitalesMultiples extends Component {
         request = request.substring(0, request.length-1)
         axios.put(this.url+request).then(response => {
             
+            this.getHospitalesSeleccionados();
+
             Swal.fire({
             title: "¡Salario incrementado!",
             icon: "success"
             })
-            
-            this.getHospitalesSeleccionados();
             
         })
 
@@ -66,31 +68,40 @@ export default class HospitalesMultiples extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <h1>Hospitales Múltiples</h1>
-        <form>
-            <label>Selecciona hospitales: </label>
-            <select className='form-control' multiple ref={this.selectHospital}>
-                {
-                    this.state.hospitales.map((hospital, index) => {
-                        return(<option key={index} value={hospital.idHospital}>{hospital.nombre}</option>)
-                    })
-                }
-            </select>
-            <button className='btn btn-primary my-2' onClick={this.getHospitalesSeleccionados}>Mostrar</button>
-        </form>
-        {
-            this.state.hospitalesSeleccionados.length > 0 &&
-            (<div>
-                <form className='my-2 py-2'>
-                    <label>Incrementar salario: </label>
-                    <input type='number' defaultValue={0} ref={this.incrementarSalarioBoton} className='form-control my-2 w-25'/>
-                    <button className='btn btn-primary' onClick={this.incrementarSalario}>Incrementar</button>
-                </form>
-                <Trabajadores idhospitales = {this.state.hospitalesSeleccionados}/>
-            </div>)
-        }
-      </div>
+        <>
+            { this.state.status ? 
+                (<div className='container'>
+                    <h1>Hospitales Múltiples</h1>
+                    <form>
+                        <label>Selecciona hospitales: </label>
+                        <select className='form-control' multiple ref={this.selectHospital}>
+                            {
+                                this.state.hospitales.map((hospital, index) => {
+                                    return(<option key={index} value={hospital.idHospital}>{hospital.nombre}</option>)
+                                })
+                            }
+                        </select>
+                        <button className='btn btn-primary my-2' onClick={this.getHospitalesSeleccionados}>Mostrar</button>
+                    </form>
+                    {
+                        this.state.hospitalesSeleccionados.length > 0 &&
+                        (<div>
+                            <form className='my-2 py-2'>
+                                <label>Incrementar salario: </label>
+                                <input type='number' defaultValue={0} ref={this.incrementarSalarioBoton} className='form-control my-2 w-25'/>
+                                <button className='btn btn-primary' onClick={this.incrementarSalario}>Incrementar</button>
+                            </form>
+                            <Trabajadores idhospitales = {this.state.hospitalesSeleccionados}/>
+                        </div>)
+                    }
+                </div>
+            ) : (
+                <div className='container d-flex align-items-center justify-content-center' style={{minHeight: "10em"}}>
+                    <img src={loading} style={{width: "50px"}}/>
+                </div>
+            )
+            }
+        </>
     )
   }
 }

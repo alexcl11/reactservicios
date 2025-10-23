@@ -47,6 +47,9 @@ export default class Menu extends Component {
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/collatz/7">Collatz</NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/hospitales">Hospitales Múltiples</NavLink>
+                </li>
               </ul>
             </div>
           </div>

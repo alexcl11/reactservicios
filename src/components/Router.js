@@ -12,6 +12,7 @@ import NotFound from './NotFound'
 import TablaMultiplicar from './TablaMultiplicar'
 import Collatz from './Collatz'
 import Menu from './Menu'
+import HospitalesMultiples from './HospitalesMultiples'
 
 export default class Router extends Component {
   render() {
@@ -45,6 +46,7 @@ export default class Router extends Component {
                 <Route path="/cursos" element={<Cursos/>}/>
                 <Route path="/tablamultiplicar/:minumero" element={<TablaMultiplicarElement/>}/>
                 <Route path="/collatz/:numero" element={<CollatzElement/>}/>
+                <Route path="/hospitales" element={<HospitalesMultiples/>}/>
                 <Route path="*" element={<NotFound/>}/>                
             </Routes>
         </BrowserRouter>        
